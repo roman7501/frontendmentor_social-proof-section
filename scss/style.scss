@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;700&display=swap");
+@import "config";
+:root {
+  --primary-color: hsl(300, 43%, 22%);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Spartan", sans-serif;
+  background: url(../images/bg-pattern-top-desktop.svg), url(../images/bg-pattern-bottom-desktop.svg);
+  background-size: 50%, 65%;
+  background-repeat: no-repeat;
+  background-position: left top, right bottom;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-grid {
+  width: 80%;
+  display: grid;
+  grid-template-areas:
+    "head reviews"
+    "users users";
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 50px;
+}
+
+// Header
+
+header {
+  grid-area: head;
+  color: var(--primary-color);
+  padding-right: 20px;
+  h1 {
+    max-width: 70%;
+    font-size: 3.1em;
+    margin-bottom: 0.3em;
+  }
+  p {
+    max-width: 90%;
+    color: hsl(303, 10%, 53%);
+    line-height: 1.5;
+    font-weight: 500;
+  }
+}
+
+// Reviews
+.container-reviews {
+  grid-area: reviews;
+  .review {
+    right: 0;
+    width: 100%;
+    padding: 20px 30px;
+    color: var(--primary-color);
+    font-weight: 700;
+    background: hsl(300, 24%, 96%);
+    margin-top: 15px;
+    border-radius: 7px;
+
+    p:before {
+      content: url(../images/icon-star.svg);
+      margin-right: 15px;
+    }
+  }
+  .review:nth-child(1) {
+    transform: translateX(-60px);
+  }
+  .review:nth-child(2) {
+    transform: translateX(-30px);
+  }
+}
+
+// Card user
+.container-card-user {
+  margin-top: 30px;
+  grid-area: users;
+  display: flex;
+  justify-content: space-between;
+
+  .card-user:nth-child(2n + 2) {
+    margin: 0 20px;
+  }
+  .card-user:nth-child(2) {
+    transform: translateY(20px);
+  }
+  .card-user:nth-child(3) {
+    transform: translateY(40px);
+  }
+  .card-user {
+    background: hsl(300, 43%, 22%);
+    color: #fff;
+    border-radius: 5px;
+    padding: 30px;
+    .card-top {
+      display: flex;
+      img {
+        border-radius: 50%;
+        width: 15%;
+      }
+      .name {
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+        font-size: 0.9em;
+
+        p {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          font-weight: bold;
+        }
+        p:after {
+          content: "Verified Buyer";
+          font-weight: 400;
+          margin-top: 5px;
+          color: hsl(333, 80%, 67%);
+        }
+      }
+    }
+    .card-bottom {
+      margin-top: 20px;
+      font-size: 0.9em;
+      line-height: 1.7;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .container-grid {
+    width: 95%;
+  }
+  header {
+    h1 {
+      max-width: 100%;
+    }
+    p {
+      max-width: 100%;
+    }
+  }
+}
+@media (max-width: 860px) {
+  .container-grid {
+    width: 95%;
+  }
+}
+
+@media (max-width: 860px) {
+  body {
+    align-items: unset;
+    background: url(../images/bg-pattern-top-desktop.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+    width: unset;
+  }
+
+  .container-grid {
+    margin-top: 90px;
+    width: 80%;
+    grid-template-areas:
+      "head"
+      "reviews"
+      "users";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 50px;
+  }
+
+  header {
+    text-align: center;
+    padding-right: 0;
+
+    h1 {
+      max-width: 500px;
+      margin: 0 auto;
+      font-size: 2.2em;
+    }
+    p {
+      max-width: 400px;
+      margin: 30px auto 0 auto;
+    }
+  }
+  .container-reviews {
+    .review:nth-child(1) {
+      transform: translateX(0);
+    }
+    .review:nth-child(2) {
+      transform: translateX(0);
+    }
+    p {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    p:before {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+  .container-card-user {
+    margin-top: 10px;
+
+    flex-direction: column;
+
+    .card-user:nth-child(2n + 2) {
+      margin: 0 0 20px 0;
+    }
+    .card-user:nth-child(2) {
+      transform: translateY(0);
+    }
+    .card-user:nth-child(3) {
+      transform: translateY(0);
+    }
+    .card-user {
+      margin-bottom: 20px;
+    }
+  }
+} ;
